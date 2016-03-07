@@ -18,7 +18,7 @@ To get started with developing on this repo:
 - ```python run.py```
 - Open a browser and pass in the apropriate URL with QueryString params:  ```http://127.0.0.1:5000/?i=some%20name&g=1234567```
 
-We want you to succeed and to succeed easily! We're happy to give you this stuff rather than making you "deduce" it somehow. Probably a half hour together setting this up would square you away to start up.
+We want you to succeed and to succeed easily! Please reach out with any questions or comments
 
 # Contributing
 
@@ -30,7 +30,7 @@ This repository requires 1 Code Review before new code can be added to Master. I
 - Check that your Python reasonably meets pep8 standards: $ pep8 #your_file#
 - If your code editor has an Inspect Code feature, inspect it and make any reasonable changes.
 - Combine the code with the current master branch. While on your branch, type in: $ git merge master
-- Submit a Pull Request, and drop it into the #implementations channel
+- Submit a Pull Request
 
 For smaller pull requests, it will likely take a few days to thoroughly go over it and test it. For larger pull requests, it could take up to a week to fully review the code, test it, and make comments. 
 
