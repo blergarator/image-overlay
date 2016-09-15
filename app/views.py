@@ -111,6 +111,45 @@ def fractal():
     return send_file('img2.png', mimetype='image/png')
 
 
+@app.route('/af', methods=['GET'])
+def aber():
+    ''' Takes incoming query string parameters and returns built image
+    '''
+    # Collect user_id and group
+    user_id = request.args.get('i')
+    group = request.args.get('g')
+
+    # Open base image
+    im = Image.open('app/aber.jpg')
+
+    # Create overlay image with Alpha channel
+    back = Image.new('RGBA', (im.width, im.height), (255, 0, 0, 0))
+
+    # Create Draw class
+    draw = ImageDraw.Draw(back)
+
+    # Set up fonts
+    font_header = ImageFont.truetype("app/OpenSans-Regular.ttf", 20)
+    font = ImageFont.truetype("app/OpenSans-Regular.ttf", 16)
+
+    # Draw alpha overlay line
+    draw.line((0, 0) + (im.width, 0), fill=(128, 128, 128, 170), width=120)
+
+    # Draw text onto overlay
+    txt_clr = (255, 255, 255)
+    draw.text((20, 10), "Member ID:", txt_clr, font=font_header)
+    draw.text((20, 34), user_id, txt_clr, font=font)
+    draw.text((450, 10), "Group:", txt_clr, font=font_header)
+    draw.text((450, 34), group, txt_clr, font=font)
+
+    # Merge images, overlay on top
+    im.paste(back, mask=back)
+    im.save('app/img2.png')
+
+    # Return final
+    return send_file('img2.png', mimetype='image/png')
+
+
 @app.route('/is', methods=['GET'])
 def overlay():
     ''' Takes incoming query string parameters and returns built image
